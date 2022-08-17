@@ -32,7 +32,7 @@ const SpanBox = styled.span`
 
 const Home: NextPage = () => {
   const router = useRouter()
-  console.log(window.location.hostname)
+  if (typeof window !== 'undefined') console.log(window.location.hostname)
   return (
     <Article title={'Information Idol'}>
       <Box
