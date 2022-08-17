@@ -6,7 +6,7 @@ import {
   Button,
   Link,
   Heading,
-  Image,
+  Image as ImageChakra,
   useColorModeValue,
   List,
   ListItem,
@@ -21,7 +21,9 @@ import { Facebook, GitHub } from 'react-feather'
 import styled from '@emotion/styled'
 import { SomeGridItem } from '@/components/grid-item'
 
-import thumbnailGirlFront from './../public/images/girl-01.gif'
+import thumbnailGirl from './../public/images/girl-01.gif'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 const SpanBox = styled.span`
   display: inline-block;
@@ -29,6 +31,8 @@ const SpanBox = styled.span`
 `
 
 const Home: NextPage = () => {
+  const router = useRouter()
+  console.log(window.location.hostname)
   return (
     <Article title={'Information Idol'}>
       <Box
@@ -44,6 +48,14 @@ const Home: NextPage = () => {
         Hello, I&apos;m a front end developer based in Hanoi!
       </Box>
 
+      <Image
+        src={thumbnailGirl}
+        blurDataURL={`${router.asPath}/images/girl-01.gif`}
+        placeholder={'blur'}
+        loading={'lazy'}
+        alt={'alt'}
+      />
+
       <Box display={{ md: 'flex' }}>
         <Box flexGrow={1}>
           <Heading as={'h2'} variant={'page-title'}>
@@ -57,7 +69,7 @@ const Home: NextPage = () => {
           ml={{ md: 6 }}
           textAlign={'center'}
         >
-          <Image
+          <ImageChakra
             borderColor={'whiteAlpha.800'}
             borderWidth={2}
             borderStyle={'solid'}
@@ -177,14 +189,15 @@ const Home: NextPage = () => {
               thumbnail={'/images/girl-01.gif'}
               title={'Front end'}
             >
-              Không nên đánh giá một cô gái qua vẻ bề ngoài.
+              Không nên đánh giá một người qua vẻ bề ngoài, hãy quan sát từng
+              chút.
             </SomeGridItem>
             <SomeGridItem
               href={'/'}
               thumbnail={'/images/girl-02.gif'}
               title={'Back end'}
             >
-              Người mình thích chưa hẳn là người tốt.
+              Người bạn thích chưa hẳn tốt, người bạn ghét chưa hẳn xấu.
             </SomeGridItem>
           </SimpleGrid>
         </Box>

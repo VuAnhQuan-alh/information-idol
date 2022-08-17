@@ -3,7 +3,7 @@ import Image from 'next/image'
 import {
   Box,
   Text,
-  Image as ImageChakra,
+  Img as ImageSSR,
   LinkBox,
   LinkOverlay,
 } from '@chakra-ui/react'
@@ -32,7 +32,7 @@ export const SomeGridItem = ({
 }: IGridItemProps) => (
   <Box w={'100%'} textAlign={'center'}>
     <LinkBox cursor={'pointer'}>
-      <ImageChakra
+      <ImageSSR
         src={thumbnail}
         alt={title}
         className={'grid-item-thumbnail'}
