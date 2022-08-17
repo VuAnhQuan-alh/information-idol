@@ -21,18 +21,12 @@ import { Facebook, GitHub } from 'react-feather'
 import styled from '@emotion/styled'
 import { SomeGridItem } from '@/components/grid-item'
 
-import thumbnailGirl from './../public/images/girl-01.gif'
-import Image from 'next/image'
-import { useRouter } from 'next/router'
-
 const SpanBox = styled.span`
   display: inline-block;
   text-indent: 0em;
 `
 
 const Home: NextPage = () => {
-  const router = useRouter()
-  if (typeof window !== 'undefined') console.log(window.location.hostname)
   return (
     <Article title={'Information Idol'}>
       <Box
@@ -47,14 +41,6 @@ const Home: NextPage = () => {
       >
         Hello, I&apos;m a front end developer based in Hanoi!
       </Box>
-
-      <Image
-        src={thumbnailGirl}
-        blurDataURL={`${router.asPath}/images/girl-01.gif`}
-        placeholder={'blur'}
-        loading={'lazy'}
-        alt={'alt'}
-      />
 
       <Box display={{ md: 'flex' }}>
         <Box flexGrow={1}>

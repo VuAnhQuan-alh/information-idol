@@ -1,5 +1,5 @@
 import Navbar from '@/components/navbar'
-import { Box, Container } from '@chakra-ui/react'
+import { Box, Container, Text } from '@chakra-ui/react'
 import Head from 'next/head'
 import { NextRouter } from 'next/router'
 import { ReactNode } from 'react'
@@ -26,6 +26,12 @@ const Main = ({ children, router }: IMainProps) => {
       <Container maxW={'100%'} pt={20}>
         {children}
       </Container>
+
+      <Box textAlign={'center'} mt={6}>
+        <Text fontSize={12} color={'whiteAlpha.900'} opacity={0.4}>
+          &copy;&nbsp;Vũ Anh Quân. All Rights Copy
+        </Text>
+      </Box>
     </Box>
   )
 }

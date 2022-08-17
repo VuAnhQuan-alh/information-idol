@@ -3,14 +3,14 @@ import Image from 'next/image'
 import {
   Box,
   Text,
-  Img as ImageSSR,
+  Image as ImageChakra,
   LinkBox,
   LinkOverlay,
 } from '@chakra-ui/react'
 import { Global } from '@emotion/react'
 import { ReactNode } from 'react'
 
-type IGridItemProps = {
+type ISomeItemProps = {
   children: ReactNode
   href: string
   title: string
@@ -29,10 +29,10 @@ export const SomeGridItem = ({
   href,
   title,
   thumbnail,
-}: IGridItemProps) => (
+}: ISomeItemProps) => (
   <Box w={'100%'} textAlign={'center'}>
     <LinkBox cursor={'pointer'}>
-      <ImageSSR
+      <ImageChakra
         src={thumbnail}
         alt={title}
         className={'grid-item-thumbnail'}
