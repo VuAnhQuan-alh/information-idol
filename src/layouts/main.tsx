@@ -23,7 +23,7 @@ const Main = ({ children, router }: IMainProps) => {
 
       <Navbar path={router.asPath} />
 
-      <Container maxW={'100%'} pt={16}>
+      <Container maxW={'100%'} pt={20}>
         {children}
       </Container>
     </Box>

@@ -16,22 +16,24 @@ const variants = {
 }
 
 const Article = ({ children, title }: IArticleProps) => {
-  ;<motion.article
-    initial={'hidden'}
-    animate={'enter'}
-    exit={'exit'}
-    variants={variants}
-    transition={{ duration: 0.25, type: 'easeInOut' }}
-    style={{ position: 'relative' }}
-  >
-    <>
-      <Head>
-        <title>{title} - ALH</title>
-      </Head>
-      <GridItemStyle />
-      <Container maxW={'container.md'}>{children}</Container>
-    </>
-  </motion.article>
+  return (
+    <motion.article
+      initial={'hidden'}
+      animate={'enter'}
+      exit={'exit'}
+      variants={variants}
+      transition={{ duration: 0.25, type: 'easeInOut' }}
+      style={{ position: 'relative' }}
+    >
+      <>
+        <Head>
+          <title>{title} - ALH</title>
+        </Head>
+        <GridItemStyle />
+        <Container maxW={'container.md'}>{children}</Container>
+      </>
+    </motion.article>
+  )
 }
 
 export default Article

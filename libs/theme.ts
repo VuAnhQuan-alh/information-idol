@@ -1,4 +1,4 @@
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme, LinkProps } from '@chakra-ui/react'
 import { GlobalStyles, mode } from '@chakra-ui/theme-tools'
 
 const styles = {
@@ -10,13 +10,30 @@ const styles = {
 }
 
 const components = {
-  Heading: {},
-  Link: {},
+  Heading: {
+    variants: {
+      'section-title': {
+        textDecoration: 'underline',
+        fontSize: 20,
+        textUnderlineOffset: 6,
+        textDecorationColor: '#525252',
+        textDecorationThickness: 4,
+        marginTop: 3,
+        marginBottom: 4,
+      },
+    },
+  },
+  Link: {
+    baseStyle: (props: LinkProps) => ({
+      color: mode('#3d7aed', '#ff63c3')(props),
+      textUnderlineOffset: 3,
+    }),
+  },
 }
 
 const fonts = {
-  heading: `'M PLUS Bold', sans-serif`,
-  body: `'M PLUS Medium', sans-serif`,
+  heading: `'M PLUS Rounded 1c Bold', sans-serif`,
+  body: `'M PLUS Rounded 1c Medium', sans-serif`,
 }
 
 const colors = {
