@@ -47,7 +47,7 @@ const Home: NextPage = () => {
           <Heading as={'h2'} variant={'page-title'}>
             Vũ Anh Quân
           </Heading>
-          <Paragraph>Craftsman (17/08/2022)</Paragraph>
+          <Paragraph>Rights craftsman (17/08/2022)</Paragraph>
         </Box>
         <Box
           flexShrink={0}
