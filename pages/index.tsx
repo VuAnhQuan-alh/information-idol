@@ -11,12 +11,22 @@ import {
   List,
   ListItem,
   Icon,
+  SimpleGrid,
 } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import NextLink from 'next/link'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { BioSection, BioYear } from '@/components/bio'
 import { Facebook, GitHub } from 'react-feather'
+import styled from '@emotion/styled'
+import { SomeGridItem } from '@/components/grid-item'
+
+import thumbnailGirlFront from './../public/images/girl-01.gif'
+
+const SpanBox = styled.span`
+  display: inline-block;
+  text-indent: 0em;
+`
 
 const Home: NextPage = () => {
   return (
@@ -39,7 +49,7 @@ const Home: NextPage = () => {
           <Heading as={'h2'} variant={'page-title'}>
             Vũ Anh Quân
           </Heading>
-          <Paragraph>Craftsman Front End ( 17/08/2022 )</Paragraph>
+          <Paragraph>Craftsman (17/08/2022)</Paragraph>
         </Box>
         <Box
           flexShrink={0}
@@ -90,32 +100,33 @@ const Home: NextPage = () => {
           </Heading>
           <BioSection>
             <BioYear>20/05/2001</BioYear>
-            <Paragraph>
+            <Paragraph textAlign={'start'}>
               Sinh ra và lớn lên tại Quỳnh Hưng, Quỳnh Lưu, Nghệ An, Việt Nam.
             </Paragraph>
           </BioSection>
           <BioSection>
             <BioYear>08/2019 - 05/2022</BioYear>
-            <Paragraph>
+            <Paragraph textAlign={'start'}>
               Hoàn thành chương trình Thiết kế Website tại FPT Polytechnic
             </Paragraph>
           </BioSection>
           <BioSection>
             <BioYear>05/2021 - present</BioYear>
-            <Paragraph>Làm việc tại Sphinx JSC</Paragraph>
+            <Paragraph textAlign={'start'}>Làm việc tại Sphinx JSC</Paragraph>
           </BioSection>
           <BioSection>
             <BioYear>Hobbies</BioYear>
-            <Paragraph>
+            <Paragraph textAlign={'start'}>
               <Link
                 target={'_blank'}
                 href={
                   'https://soundcloud.com/hoai-linh-946093491/vi-me-anh-bat-chia-tay-miu-le-x-karik-x-cdk-darling-mix'
                 }
               >
-                🎧 Listening to Music
+                <SpanBox>🎧 Listening to Music</SpanBox>
               </Link>
-              , 💤 Sleeping, 🍕️ Eating, 🛁 Relaxing, 💻 Coding,...
+              , <SpanBox>💤 Sleeping</SpanBox>,<SpanBox>🍕️ Eating</SpanBox>,{' '}
+              <SpanBox>🛁 Relaxing</SpanBox>, <SpanBox>💻 Coding</SpanBox>,...
             </Paragraph>
           </BioSection>
         </Box>
@@ -155,6 +166,27 @@ const Home: NextPage = () => {
               </Link>
             </ListItem>
           </List>
+        </Box>
+      </Section>
+
+      <Section delay={0.4}>
+        <Box mt={4}>
+          <SimpleGrid columns={[1, 2, 2]} gap={6}>
+            <SomeGridItem
+              href={'/'}
+              thumbnail={'/images/girl-01.gif'}
+              title={'Front end'}
+            >
+              Không nên đánh giá một cô gái qua vẻ bề ngoài.
+            </SomeGridItem>
+            <SomeGridItem
+              href={'/'}
+              thumbnail={'/images/girl-02.gif'}
+              title={'Back end'}
+            >
+              Người mình thích chưa hẳn là người tốt.
+            </SomeGridItem>
+          </SimpleGrid>
         </Box>
       </Section>
     </Article>

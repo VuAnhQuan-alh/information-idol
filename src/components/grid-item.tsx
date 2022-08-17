@@ -1,6 +1,12 @@
 import NextLink from 'next/link'
 import Image from 'next/image'
-import { Box, Text, LinkBox, LinkOverlay } from '@chakra-ui/react'
+import {
+  Box,
+  Text,
+  Image as ImageChakra,
+  LinkBox,
+  LinkOverlay,
+} from '@chakra-ui/react'
 import { Global } from '@emotion/react'
 import { ReactNode } from 'react'
 
@@ -18,7 +24,7 @@ type IWorkItemProps = {
   thumbnail: string
 }
 
-export const GridItem = ({
+export const SomeGridItem = ({
   children,
   href,
   title,
@@ -26,7 +32,7 @@ export const GridItem = ({
 }: IGridItemProps) => (
   <Box w={'100%'} textAlign={'center'}>
     <LinkBox cursor={'pointer'}>
-      <Image
+      <ImageChakra
         src={thumbnail}
         alt={title}
         className={'grid-item-thumbnail'}
