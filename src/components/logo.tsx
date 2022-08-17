@@ -39,7 +39,7 @@ const Logo = () => {
             fontWeight={'bold'}
             ml={3}
           >
-            Information IDOL
+            Portfolio
           </Text>
         </LogoBox>
       </a>
