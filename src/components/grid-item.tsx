@@ -1,60 +1,61 @@
 import NextLink from 'next/link'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import {
   Box,
   Text,
   Image as ImageChakra,
   LinkBox,
   LinkOverlay,
+  useBoolean,
 } from '@chakra-ui/react'
 import { Global } from '@emotion/react'
 import { ReactNode } from 'react'
 
 type ISomeItemProps = {
   children: ReactNode
-  href: string
   title: string
   thumbnail: string
 }
 
 type IWorkItemProps = {
   children: ReactNode
-  id: string
+  href: string
   title: string
-  thumbnail: string
+  thumbnail: string | StaticImageData
 }
 
 export const SomeGridItem = ({
   children,
-  href,
   title,
   thumbnail,
-}: ISomeItemProps) => (
-  <Box w={'100%'} textAlign={'center'}>
-    <LinkBox cursor={'pointer'}>
-      <ImageChakra
-        src={thumbnail}
-        alt={title}
-        className={'grid-item-thumbnail'}
-        placeholder={'blur'}
-        loading={'lazy'}
-      />
-      <LinkOverlay href={href} target={'_blank'}>
+}: ISomeItemProps) => {
+  const [flag, setFlag] = useBoolean()
+  return (
+    <Box w={'100%'} textAlign={'center'}>
+      <Box onClick={setFlag.toggle} cursor={'pointer'}>
+        <ImageChakra
+          src={thumbnail}
+          alt={title}
+          className={'grid-item-thumbnail'}
+          placeholder={'blur'}
+          loading={'lazy'}
+          filter={`blur(${!flag ? '10px' : '0px'})`}
+        />
         <Text mt={2}>{title}</Text>
-      </LinkOverlay>
-      <Text fontSize={14}>{children}</Text>
-    </LinkBox>
-  </Box>
-)
+        <Text fontSize={14}>{children}</Text>
+      </Box>
+    </Box>
+  )
+}
 
-export const WorkGridItem = ({
+export const BoxGridItem = ({
   children,
-  id,
+  href,
   title,
   thumbnail,
 }: IWorkItemProps) => (
   <Box w={'100%'} textAlign={'center'}>
-    <NextLink href={`/works/${id}`}>
+    <NextLink href={href}>
       <LinkBox cursor={'pointer'}>
         <Image
           src={thumbnail}
@@ -63,7 +64,7 @@ export const WorkGridItem = ({
           placeholder={'blur'}
           loading={'lazy'}
         />
-        <LinkOverlay href={`/works/${id}`} target={'_blank'}>
+        <LinkOverlay href={href} target={'_blank'}>
           <Text mt={2} fontSize={20}>
             {title}
           </Text>

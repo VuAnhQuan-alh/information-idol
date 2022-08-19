@@ -17,7 +17,7 @@ import type { NextPage } from 'next'
 import NextLink from 'next/link'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { BioSection, BioYear } from '@/components/bio'
-import { Facebook, GitHub } from 'react-feather'
+import { Facebook, Instagram, Twitter } from 'react-feather'
 import styled from '@emotion/styled'
 import { SomeGridItem } from '@/components/grid-item'
 
@@ -82,7 +82,7 @@ const Home: NextPage = () => {
             trau dồi, phát triển bản thân.
           </Paragraph>
           <Box textAlign={'center'} my={4}>
-            <NextLink href={'/'}>
+            <NextLink href={'/works'}>
               <Button rightIcon={<ChevronRightIcon />} colorScheme={'teal'}>
                 Portfolio
               </Button>
@@ -137,14 +137,26 @@ const Home: NextPage = () => {
           </Heading>
           <List spacing={{ base: 1, md: 0 }}>
             <ListItem>
+              <Link href={'https://twitter.com/QunVAnh4'} target={'_blank'}>
+                <Button
+                  variant={'ghost'}
+                  colorScheme={'teal'}
+                  bg={{ base: '#81e6d91f', md: 'none' }}
+                  leftIcon={<Icon as={Twitter} />}
+                >
+                  &reg;Khúc Thừa Dụ
+                </Button>
+              </Link>
+            </ListItem>
+            <ListItem>
               <Link href={'https://github.com/VuAnhQuan-alh'} target={'_blank'}>
                 <Button
                   variant={'ghost'}
                   colorScheme={'teal'}
                   bg={{ base: '#81e6d91f', md: 'none' }}
-                  leftIcon={<Icon as={GitHub} />}
+                  leftIcon={<Icon as={Instagram} />}
                 >
-                  &copy;VuAnhQuan-alh
+                  &reg;an_luu_hung
                 </Button>
               </Link>
             </ListItem>
@@ -159,7 +171,7 @@ const Home: NextPage = () => {
                   bg={{ base: '#81e6d91f', md: 'none' }}
                   leftIcon={<Icon as={Facebook} />}
                 >
-                  &copy;An Lưu Hưng
+                  &reg;An Lưu Hưng
                 </Button>
               </Link>
             </ListItem>
@@ -170,22 +182,21 @@ const Home: NextPage = () => {
       <Section delay={0.4}>
         <Box mt={4}>
           <SimpleGrid columns={[1, 2, 2]} gap={6}>
-            <SomeGridItem
-              href={'/'}
-              thumbnail={'/images/girl-01.gif'}
-              title={'Front end'}
-            >
+            <SomeGridItem thumbnail={'/images/girl-01.gif'} title={'Front end'}>
               Không nên đánh giá một người qua vẻ bề ngoài, hãy quan sát từng
               chút.
             </SomeGridItem>
-            <SomeGridItem
-              href={'/'}
-              thumbnail={'/images/girl-02.gif'}
-              title={'Back end'}
-            >
+            <SomeGridItem thumbnail={'/images/girl-02.gif'} title={'Back end'}>
               Người bạn thích chưa hẳn tốt, người bạn ghét chưa hẳn xấu.
             </SomeGridItem>
           </SimpleGrid>
+        </Box>
+        <Box textAlign={'center'} my={4}>
+          <NextLink href={'/posts'}>
+            <Button rightIcon={<ChevronRightIcon />} colorScheme={'teal'}>
+              Popular posts
+            </Button>
+          </NextLink>
         </Box>
       </Section>
     </Article>
