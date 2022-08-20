@@ -62,7 +62,7 @@ const Home: NextPage = () => {
             maxW={'100px'}
             display={'inline-block'}
             borderRadius={'full'}
-            src={'/images/dog_lag.png'}
+            src={'/images/dog_lag.webp'}
             alt={'Profile photo'}
           />
         </Box>
@@ -81,7 +81,7 @@ const Home: NextPage = () => {
             thành phố. Mong muốn tìm hiểu, học hỏi các kỹ năng và công nghệ để
             trau dồi, phát triển bản thân.
           </Paragraph>
-          <Box textAlign={'center'} my={4}>
+          <Box textAlign={'center'} mt={2}>
             <NextLink href={'/works'}>
               <Button rightIcon={<ChevronRightIcon />} colorScheme={'teal'}>
                 Portfolio
@@ -92,7 +92,7 @@ const Home: NextPage = () => {
       </Section>
 
       <Section delay={0.2}>
-        <Box mt={4}>
+        <Box mt={8}>
           <Heading as={'h3'} variant={'section-title'}>
             Information
           </Heading>
@@ -180,11 +180,11 @@ const Home: NextPage = () => {
       </Section>
 
       <Section delay={0.4}>
-        <Box mt={4}>
+        <Box mt={12}>
           <SimpleGrid columns={[1, 2, 2]} gap={6}>
             <SomeGridItem
-              thumbnail={
-                'https://res.cloudinary.com/anluuhung/image/upload/v1660977300/info-idol/gif/ezgif-3-54d61d485c_gvy4tm.gif'
+              src={
+                'https://res.cloudinary.com/anluuhung/video/upload/v1660984605/info-idol/video/gif-buoi_s_egz4tr.mp4'
               }
               title={'Front end'}
             >
@@ -192,16 +192,17 @@ const Home: NextPage = () => {
               chút.
             </SomeGridItem>
             <SomeGridItem
-              thumbnail={
-                'https://res.cloudinary.com/anluuhung/image/upload/v1660976830/info-idol/gif/girl-02_yt4frw.gif'
+              src={
+                'https://res.cloudinary.com/anluuhung/video/upload/v1660984608/info-idol/video/gif-dao_s_uogqhl.mp4'
               }
               title={'Back end'}
             >
-              Người bạn thích chưa hẳn tốt, người bạn ghét chưa hẳn xấu.
+              Người bạn thích chưa hẳn là người tốt, người bạn ghét chưa hẳn là
+              kẻ xấu.
             </SomeGridItem>
           </SimpleGrid>
         </Box>
-        <Box textAlign={'center'} my={4}>
+        <Box textAlign={'center'} mt={4}>
           <NextLink href={'/posts'}>
             <Button rightIcon={<ChevronRightIcon />} colorScheme={'teal'}>
               Popular posts

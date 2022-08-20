@@ -13,9 +13,11 @@ import {
   Stack,
   useColorModeValue,
   IconButton,
+  Button,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { ReactNode } from 'react'
+import { GitHub } from 'react-feather'
 import ButtonTheme from './button-theme'
 import Logo from './logo'
 
@@ -95,6 +97,17 @@ const Navbar = (props: INavbarProps) => {
         </Stack>
 
         <Box flex={1} textAlign={'right'}>
+          <IconButton
+            as={Link}
+            onClick={() =>
+              navigator.clipboard.writeText(
+                'https://github.com/VuAnhQuan-alh/information-idol'
+              )
+            }
+            icon={<GitHub size={14} />}
+            aria-label={'btn-github'}
+            mr={2}
+          />
           <ButtonTheme />
           <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
             <Menu>

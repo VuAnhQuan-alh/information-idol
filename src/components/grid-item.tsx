@@ -1,20 +1,13 @@
 import NextLink from 'next/link'
-import Image, { StaticImageData } from 'next/image'
-import {
-  Box,
-  Text,
-  Image as ImageChakra,
-  LinkBox,
-  LinkOverlay,
-  useBoolean,
-} from '@chakra-ui/react'
+import Image from 'next/image'
+import { Box, Text, LinkBox, LinkOverlay, useBoolean } from '@chakra-ui/react'
 import { Global } from '@emotion/react'
 import { ReactNode } from 'react'
 
 type ISomeItemProps = {
   children: ReactNode
   title: string
-  thumbnail: string
+  src: string
 }
 
 type IWorkItemProps = {
@@ -24,23 +17,16 @@ type IWorkItemProps = {
   thumbnail: string
 }
 
-export const SomeGridItem = ({
-  children,
-  title,
-  thumbnail,
-}: ISomeItemProps) => {
+export const SomeGridItem = ({ children, title, src }: ISomeItemProps) => {
   const [flag, setFlag] = useBoolean()
   return (
     <Box w={'100%'} textAlign={'center'}>
       <Box onClick={setFlag.toggle} cursor={'pointer'}>
-        <ImageChakra
-          src={thumbnail}
-          alt={title}
-          className={'grid-item-thumbnail'}
-          placeholder={'blur'}
-          loading={'lazy'}
-          filter={`blur(${!flag ? '10px' : '0px'})`}
-        />
+        <Box filter={`${!flag ? 'blur(5px)' : 'blur(0px)'}`}>
+          <video autoPlay loop muted playsInline>
+            <source src={src} type={'video/mp4'} />
+          </video>
+        </Box>
         <Text mt={2}>{title}</Text>
         <Text fontSize={14}>{children}</Text>
       </Box>
