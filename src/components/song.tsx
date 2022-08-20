@@ -20,7 +20,7 @@ import { useEffect, useRef, useState } from 'react'
 
 type ISong = {
   url: string
-  srcImg: string | string[] | undefined
+  srcImg: string
 }
 
 const PlaySong = ({ url, srcImg }: ISong) => {
@@ -66,7 +66,7 @@ const PlaySong = ({ url, srcImg }: ISong) => {
 
   return (
     <Box mt={8}>
-      <SongImage src={'/music/' + srcImg} alt={'song'} />
+      <SongImage src={srcImg} alt={'song'} />
       <Box
         mt={4}
         p={4}
@@ -112,7 +112,7 @@ const PlaySong = ({ url, srcImg }: ISong) => {
         hidden={true}
         onTimeUpdate={onPlaying}
         ref={audioRef}
-        src={`/songs/${url}.mp3`}
+        src={url}
         controls
         typeof={'audio/mpeg'}
       ></audio>

@@ -1,59 +1,58 @@
+import { isEmpty } from 'lodash'
 import { Meta, TitleMusic } from '@/components/music'
 import Section from '@/components/section'
 import Article from '@/layouts/article'
 import PlaySong from '@/components/song'
 import { Box, Container, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { Loader } from 'react-feather'
+import { useEffect, useState } from 'react'
+
+import { audios } from '@/libs/audios-fake'
 
 type ISong = {
   url: string
+  href: string
   title: string
   auth: string
   src: string
 }
 
+const defaultSong = {
+  url: 'https://res.cloudinary.com/anluuhung/video/upload/v1660968164/info-idol/songs/pho-cu-con-anh-quinn-chilly_yqkcuw.mp3',
+  title: 'Phố Cũ Còn Anh',
+  href: '/music/pho-cu-con-anh',
+  auth: 'Quinn ft Chilly',
+  src: 'https://res.cloudinary.com/anluuhung/image/upload/v1660966470/info-idol/_music-04_lyel3q.jpg',
+}
+
 const Song = () => {
   const {
     query: { musicId },
+    push: routePush,
   } = useRouter()
-  const audios = [
-    {
-      url: 'vi-me-anh-bat-chia-tay',
-      title: 'Vì mẹ anh bắt chia tay',
-      auth: 'Karik & Miu Lê',
-      src: '_music-01.jpeg',
-    },
-    {
-      url: 'lo-hen-voi-dong-lam',
-      title: 'Lỡ Hẹn Với Dòng Lam',
-      auth: 'Thái Học',
-      src: '_music-02.jpeg',
-    },
-    {
-      url: 'mascara',
-      title: 'Mascara',
-      auth: 'Chillies x BALZE',
-      src: '_music-03.jpeg',
-    },
-    {
-      url: 'pho-cu-con-anh',
-      title: 'Phố Cũ Còn Anh',
-      auth: 'Quinn ft Chilly',
-      src: '_music-04.jpeg',
-    },
-  ]
-  const handleUrl = (url: string | string[] | undefined) => {
-    if (typeof url === 'undefined') {
-      return {
-        url: '...',
-        title: '...',
-        auth: '...',
-        src: '...',
-      }
-    }
-    return audios.find((song: ISong) => url.includes(song.url))
+
+  const [theSong, setTheSong] = useState<ISong>(defaultSong)
+
+  const handleUrl = (url: string | undefined) => {
+    if (typeof url === 'string')
+      return audios.find((song: ISong) => song.url.includes(url))
+
+    return defaultSong
   }
+
+  useEffect(() => {
+    if (isEmpty(musicId)) return
+
+    // @ts-ignore
+    const song = handleUrl(musicId)
+    if (isEmpty(song)) {
+      routePush('/404')
+      return
+    }
+
+    const result = song ?? defaultSong
+    setTheSong(result)
+  }, [musicId])
 
   return (
     <Article title={'Songs'}>
@@ -67,16 +66,12 @@ const Song = () => {
                 fontWeight={'bold'}
                 fontSize={18}
               >
-                {handleUrl(musicId)?.title}
+                {theSong.title}
               </Text>
-              <Meta>{handleUrl(musicId)?.auth}</Meta>
+              <Meta>{theSong.auth}</Meta>
             </Box>
 
-            {typeof musicId === 'string' ? (
-              <PlaySong srcImg={handleUrl(musicId)?.src} url={musicId} />
-            ) : (
-              <Loader />
-            )}
+            <PlaySong srcImg={theSong.src} url={theSong.url} />
           </Section>
         </Box>
 
@@ -84,25 +79,25 @@ const Song = () => {
           <Section delay={0.2}>
             <Text>[OFFICIAL MUSIC VIDEO]</Text>
             <Text>
-              {handleUrl(musicId)?.title} - {handleUrl(musicId)?.auth}
+              {theSong.title} - {theSong.auth}
             </Text>
             <br />
             <Text>Song credits:</Text>
-            <Text>Sản xuất/Hòa âm phối khí: Chillies </Text>
-            <Text>Mix & master: Bảo Lê (BS16 Production) </Text>
-            <Text>Phát hành bài hát: Warner Music Group </Text>
-            <Text>Tác giả ca khúc: Trần Duy Khang </Text>
+            <Text>Sản xuất/Hòa âm phối khí: Chillies</Text>
+            <Text>Mix & master: Bảo Lê (BS16 Production)</Text>
+            <Text>Phát hành bài hát: Warner Music Group</Text>
+            <Text>Tác giả ca khúc: Trần Duy Khang</Text>
             <br />
             <Text>MV credits:</Text>
             <Text>Sản xuất: Quân, Ngô Minh Nghĩa F.N.P</Text>
-            <Text>Đạo diễn: Quân </Text>
+            <Text>Đạo diễn: Quân</Text>
             <Text>Quản lý sản xuất: Coconut, Anh Le</Text>
             <Text>Đạo diễn hình ảnh: Ngô Minh Nghĩa F.N.P</Text>
-            <Text>Diễn viên: Châu Dương, Duy Khang </Text>
+            <Text>Diễn viên: Châu Dương, Duy Khang</Text>
             <Text>Quay phim: Minh Mini F.N.P</Text>
             <Text>Trợ lý quay: Hải Bằng</Text>
             <Text>Phục trang: Coconut </Text>
-            <Text>Biên tập: Anh le </Text>
+            <Text>Biên tập: Anh le</Text>
             <Text>Làm màu: Trương Quốc Phương</Text>
           </Section>
         </Box>

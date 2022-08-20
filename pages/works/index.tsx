@@ -3,8 +3,6 @@ import Section from '@/components/section'
 import Article from '@/layouts/article'
 import { Container, Heading, SimpleGrid } from '@chakra-ui/react'
 
-import thumbnail_work_one from '@/public/works/_work_one.png'
-
 const Works = () => {
   return (
     <Article title={'Works'}>
@@ -18,9 +16,11 @@ const Works = () => {
             <BoxGridItem
               href={'/works/block-chain'}
               title={'Work one'}
-              thumbnail={thumbnail_work_one}
+              thumbnail={
+                'https://res.cloudinary.com/anluuhung/image/upload/v1660977432/info-idol/works/_work_one_gzrurb.png'
+              }
             >
-              Works obe
+              Works one
             </BoxGridItem>
           </Section>
         </SimpleGrid>

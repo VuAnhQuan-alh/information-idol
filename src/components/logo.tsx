@@ -28,7 +28,7 @@ const LogoBox = styled.span`
 `
 
 const Logo = () => {
-  const url = `/images/logo-${useColorModeValue('light', 'dark')}.png`
+  const url = `/images/footprint-${useColorModeValue('light', 'dark')}.webp`
   return (
     <Link href={'/'}>
       <a>

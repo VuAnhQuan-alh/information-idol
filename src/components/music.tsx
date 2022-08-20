@@ -1,4 +1,5 @@
 import NextLink from 'next/link'
+import NextImage from 'next/image'
 import {
   Badge,
   Box,
@@ -56,17 +57,27 @@ export const TitleMusic = ({ children }: ITitleProps) => (
 )
 
 export const MusicImage = ({ src, alt }: IImageProps) => (
-  <Image borderRadius={'lg'} w={'full'} src={src} alt={alt} mb={3} />
+  <NextImage
+    src={src}
+    alt={alt}
+    className={'grid-item-thumbnail'}
+    width={'100%'}
+    height={'100%'}
+    layout={'responsive'}
+    objectFit={'cover'}
+    loading={'lazy'}
+    blurDataURL={src}
+    placeholder={'blur'}
+  />
 )
 
 export const SongImage = ({ src, alt }: IImageProps) => (
   <Image
-    borderRadius={'lg'}
-    filter={'blur(5px)'}
-    w={'full'}
     src={src}
+    className={'grid-item-thumbnail-blur'}
     alt={alt}
-    mb={3}
+    width={'100%'}
+    height={'100%'}
   />
 )
 
@@ -78,6 +89,7 @@ export const BoxMusic = ({ src, alt, href, title, auth }: IMusicProps) => (
           display={{ base: 'none', sm: 'block' }}
           position={{ md: 'relative' }}
           w={'100%'}
+          h={'100%'}
         >
           <MusicImage src={src} alt={alt} />
           <Box
@@ -93,6 +105,7 @@ export const BoxMusic = ({ src, alt, href, title, auth }: IMusicProps) => (
             flexDirection={'column'}
             alignItems={'center'}
             justifyContent={'center'}
+            color={'whiteAlpha.900'}
           >
             <Text
               fontSize={18}

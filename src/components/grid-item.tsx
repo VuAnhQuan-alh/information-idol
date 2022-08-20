@@ -21,7 +21,7 @@ type IWorkItemProps = {
   children: ReactNode
   href: string
   title: string
-  thumbnail: string | StaticImageData
+  thumbnail: string
 }
 
 export const SomeGridItem = ({
@@ -54,7 +54,7 @@ export const BoxGridItem = ({
   title,
   thumbnail,
 }: IWorkItemProps) => (
-  <Box w={'100%'} textAlign={'center'}>
+  <Box textAlign={'center'}>
     <NextLink href={href}>
       <LinkBox cursor={'pointer'}>
         <Image
@@ -62,6 +62,11 @@ export const BoxGridItem = ({
           alt={title}
           className={'grid-item-thumbnail'}
           placeholder={'blur'}
+          width={'100%'}
+          height={'85%'}
+          layout={'responsive'}
+          objectFit={'cover'}
+          blurDataURL={thumbnail}
           loading={'lazy'}
         />
         <LinkOverlay href={href} target={'_blank'}>
@@ -79,6 +84,10 @@ export const GridItemStyle = () => (
   <Global
     styles={`
       .grid-item-thumbnail {
+        border-radius: 12px;
+      }
+      .grid-item-thumbnail-blur {
+        filter: blur(5px);
         border-radius: 12px;
       }
     `}

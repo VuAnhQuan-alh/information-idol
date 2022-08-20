@@ -80,9 +80,6 @@ const Navbar = (props: INavbarProps) => {
           flexGrow={1}
           mt={{ base: 4, md: 0 }}
         >
-          <LinkItem href={'/music'} path={path}>
-            Music
-          </LinkItem>
           <LinkItem href={'/works'} path={path}>
             Works
           </LinkItem>
@@ -91,6 +88,9 @@ const Navbar = (props: INavbarProps) => {
           </LinkItem>
           <LinkItem href={'/games'} path={path}>
             Games
+          </LinkItem>
+          <LinkItem href={'/music'} path={path}>
+            Music
           </LinkItem>
         </Stack>
 
@@ -105,9 +105,6 @@ const Navbar = (props: INavbarProps) => {
                 bg={useColorModeValue('gray.300', 'whiteAlpha.300')}
               />
               <MenuList>
-                <NextLink href={'/music'} passHref>
-                  <MenuItem as={Link}>Music</MenuItem>
-                </NextLink>
                 <NextLink href={'/works'} passHref>
                   <MenuItem as={Link}>Works</MenuItem>
                 </NextLink>
@@ -116,6 +113,9 @@ const Navbar = (props: INavbarProps) => {
                 </NextLink>
                 <NextLink href={'/games'} passHref>
                   <MenuItem as={Link}>Games</MenuItem>
+                </NextLink>
+                <NextLink href={'/music'} passHref>
+                  <MenuItem as={Link}>Music</MenuItem>
                 </NextLink>
               </MenuList>
             </Menu>

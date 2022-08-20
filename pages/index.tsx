@@ -182,11 +182,21 @@ const Home: NextPage = () => {
       <Section delay={0.4}>
         <Box mt={4}>
           <SimpleGrid columns={[1, 2, 2]} gap={6}>
-            <SomeGridItem thumbnail={'/images/girl-01.gif'} title={'Front end'}>
+            <SomeGridItem
+              thumbnail={
+                'https://res.cloudinary.com/anluuhung/image/upload/v1660977300/info-idol/gif/ezgif-3-54d61d485c_gvy4tm.gif'
+              }
+              title={'Front end'}
+            >
               Không nên đánh giá một người qua vẻ bề ngoài, hãy quan sát từng
               chút.
             </SomeGridItem>
-            <SomeGridItem thumbnail={'/images/girl-02.gif'} title={'Back end'}>
+            <SomeGridItem
+              thumbnail={
+                'https://res.cloudinary.com/anluuhung/image/upload/v1660976830/info-idol/gif/girl-02_yt4frw.gif'
+              }
+              title={'Back end'}
+            >
               Người bạn thích chưa hẳn tốt, người bạn ghét chưa hẳn xấu.
             </SomeGridItem>
           </SimpleGrid>
