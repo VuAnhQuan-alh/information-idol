@@ -48,6 +48,38 @@ export const SomeGridItem = ({
   )
 }
 
+export const GameGridItem = ({
+  children,
+  href,
+  title,
+  thumbnail,
+}: IWorkItemProps) => (
+  <Box textAlign={'center'}>
+    <NextLink href={href}>
+      <LinkBox cursor={'pointer'}>
+        <Image
+          src={thumbnail}
+          alt={title}
+          className={'grid-item-thumbnail'}
+          placeholder={'blur'}
+          width={'100%'}
+          height={'100%'}
+          layout={'responsive'}
+          objectFit={'cover'}
+          blurDataURL={thumbnail}
+          loading={'lazy'}
+        />
+        <LinkOverlay href={href} target={'_blank'}>
+          <Text mt={2} fontSize={20}>
+            {title}
+          </Text>
+        </LinkOverlay>
+        <Text fontSize={14}>{children}</Text>
+      </LinkBox>
+    </NextLink>
+  </Box>
+)
+
 export const BoxGridItem = ({
   children,
   href,

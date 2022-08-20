@@ -3,6 +3,9 @@ import Section from '@/components/section'
 import Article from '@/layouts/article'
 import { Container, Heading, SimpleGrid } from '@chakra-ui/react'
 
+import { working } from '@/libs/works-fake'
+import { Loader } from 'react-feather'
+
 const Works = () => {
   return (
     <Article title={'Works'}>
@@ -12,17 +15,20 @@ const Works = () => {
         </Heading>
 
         <SimpleGrid columns={[1, 1, 2]} gap={6}>
-          <Section delay={0.1}>
-            <BoxGridItem
-              href={'/works/block-chain'}
-              title={'Work one'}
-              thumbnail={
-                'https://res.cloudinary.com/anluuhung/image/upload/v1660977432/info-idol/works/_work_one_gzrurb.png'
-              }
-            >
-              Works one
-            </BoxGridItem>
-          </Section>
+          {working &&
+            working.map((work, idx) => (
+              <Section delay={(idx + 1) / 10} key={idx}>
+                <BoxGridItem
+                  href={work.href}
+                  title={work.title}
+                  thumbnail={work.src}
+                >
+                  Lorem ipsum dolor sit amet, qui minim labore adipisicing minim
+                  sint cillum sint consectetur cupidatat.
+                </BoxGridItem>
+              </Section>
+            ))}
+          {!working && <Loader />}
         </SimpleGrid>
       </Container>
     </Article>

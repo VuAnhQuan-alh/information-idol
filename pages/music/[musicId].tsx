@@ -52,7 +52,7 @@ const Song = () => {
 
     const result = song ?? defaultSong
     setTheSong(result)
-  }, [musicId])
+  }, [musicId, routePush])
 
   return (
     <Article title={'Songs'}>

@@ -1,6 +1,6 @@
 import Article from '@/layouts/article'
 import Section from '@/components/section'
-import { BoxGridItem } from '@/components/grid-item'
+import { GameGridItem } from '@/components/grid-item'
 import { Container, Heading, SimpleGrid } from '@chakra-ui/react'
 
 const Games = () => {
@@ -13,7 +13,7 @@ const Games = () => {
 
         <SimpleGrid columns={[1, 1, 2]} gap={6}>
           <Section delay={0.1}>
-            <BoxGridItem
+            <GameGridItem
               href={'/games/pikachu'}
               title={'Game Pikachu'}
               thumbnail={
@@ -22,10 +22,10 @@ const Games = () => {
             >
               Pikachu là một tựa game vừa giải trí vừa kích thích trí tuệ. Cũng
               như rèn luyện khả năng nhanh mắt nhanh tay của người chơi.
-            </BoxGridItem>
+            </GameGridItem>
           </Section>
           <Section delay={0.2}>
-            <BoxGridItem
+            <GameGridItem
               href={'/games/sudoku'}
               title={'Game Sudoku'}
               thumbnail={
@@ -34,10 +34,10 @@ const Games = () => {
             >
               Sudoku, ban đầu có tên gọi là Number Place là một trò chơi câu đố
               sắp xếp chữ số dựa trên logic theo tổ hợp.
-            </BoxGridItem>
+            </GameGridItem>
           </Section>
           <Section delay={0.3}>
-            <BoxGridItem
+            <GameGridItem
               href={'/games/snake'}
               title={'Game Snake'}
               thumbnail={
@@ -46,7 +46,7 @@ const Games = () => {
             >
               Cùng đến với một phiên bản mới đầy cạnh tranh của trò chơi rắn và
               cố gắng sống sót càng lâu càng tốt!
-            </BoxGridItem>
+            </GameGridItem>
           </Section>
         </SimpleGrid>
       </Container>
