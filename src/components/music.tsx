@@ -86,8 +86,8 @@ export const BoxMusic = ({ src, alt, href, title, auth }: IMusicProps) => (
     <NextLink href={href} passHref>
       <LinkBox cursor={'pointer'}>
         <Box
-          display={{ base: 'none', sm: 'block' }}
-          position={{ md: 'relative' }}
+          display={{ base: 'none', sm: 'inline-block' }}
+          position={{ sm: 'relative' }}
           w={'100%'}
           h={'100%'}
         >
