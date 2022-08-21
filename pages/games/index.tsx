@@ -14,13 +14,13 @@ const Games = () => {
         <SimpleGrid columns={[1, 1, 2]} gap={6}>
           <Section delay={0.1}>
             <GameGridItem
-              href={'/games/pikachu'}
-              title={'Game Pikachu'}
+              href={'/games/pokemon'}
+              title={'Game Pokemon'}
               thumbnail={
                 'https://res.cloudinary.com/anluuhung/image/upload/v1660977567/info-idol/games/_pikachu-logo_nqdza3.png'
               }
             >
-              Pikachu là một tựa game vừa giải trí vừa kích thích trí tuệ. Cũng
+              Pokemon là một tựa game vừa giải trí vừa kích thích trí tuệ. Cũng
               như rèn luyện khả năng nhanh mắt nhanh tay của người chơi.
             </GameGridItem>
           </Section>

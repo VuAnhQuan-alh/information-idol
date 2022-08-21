@@ -1,0 +1,103 @@
+import { BoxGame, GlobalBoxGameStyle } from '@/components/game'
+import { gameImgs } from '@/libs/games-fake'
+import Section from '@/components/section'
+import Article from '@/layouts/article'
+import {
+  Box,
+  Button,
+  Container,
+  Heading,
+  IconButton,
+  Progress,
+  SimpleGrid,
+  useBoolean,
+  useColorModeValue,
+} from '@chakra-ui/react'
+import { useMediaQuery } from '@chakra-ui/react'
+import { Pause, Play, RefreshCw } from 'react-feather'
+import { useEffect, useState } from 'react'
+
+const Pokemon = () => {
+  const [isPlay, setIsPlay] = useBoolean()
+  const [isHidden, setIsHidden] = useBoolean()
+  const [isPic, setIsPic] = useState<string>('')
+  const [isMobile] = useMediaQuery('(min-width: 48em)')
+  const [arrImg, setArrImg] = useState<string[]>([])
+
+  const onHandlePic = (url: string) => {
+    if (isPic.length === 0) {
+      setIsPic(url)
+      return
+    }
+    if (url === isPic) setIsHidden.toggle
+    setIsPic('')
+  }
+
+  useEffect(() => {
+    const result = !isMobile ? gameImgs.slice(0, 10) : gameImgs
+    setArrImg(result)
+  }, [isMobile])
+
+  return (
+    <Article title={'Game Pokemon'}>
+      <Container>
+        <Heading variant={'page-title'} as={'h3'} fontSize={20} mb={4}>
+          Game Pokemon for You
+        </Heading>
+
+        <Section delay={0.1}>
+          <Box
+            p={4}
+            borderRadius={'lg'}
+            bg={useColorModeValue('gray.200', 'whiteAlpha.200')}
+          >
+            <Progress
+              height={'4px'}
+              value={75}
+              hasStripe
+              colorScheme={'facebook'}
+            />
+            <Box
+              mt={4}
+              display={'flex'}
+              justifyContent={'space-between'}
+              alignItems={'center'}
+            >
+              <Button>100</Button>
+              <IconButton
+                aria-label={'btn-play'}
+                onClick={setIsPlay.toggle}
+                icon={isPlay ? <Pause size={16} /> : <Play size={16} />}
+              />
+              <IconButton
+                aria-label={'btn-reset'}
+                icon={<RefreshCw size={16} />}
+              />
+            </Box>
+          </Box>
+        </Section>
+
+        <Box mt={4}>
+          <SimpleGrid columns={[4, 6, 6]} gap={2}>
+            <GlobalBoxGameStyle />
+            {gameImgs &&
+              [...arrImg, ...arrImg]
+                .sort(() => Math.random() - 0.5)
+                .map((game, idx) => (
+                  <Section delay={(idx + 0.5) / 10} key={idx}>
+                    <BoxGame
+                      onClick={() => onHandlePic(game)}
+                      src={game}
+                      alt={'game-alt'}
+                      hidden={isHidden}
+                    />
+                  </Section>
+                ))}
+          </SimpleGrid>
+        </Box>
+      </Container>
+    </Article>
+  )
+}
+
+export default Pokemon

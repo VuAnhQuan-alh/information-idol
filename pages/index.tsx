@@ -81,7 +81,7 @@ const Home: NextPage = () => {
             thành phố. Mong muốn tìm hiểu, học hỏi các kỹ năng và công nghệ để
             trau dồi, phát triển bản thân.
           </Paragraph>
-          <Box textAlign={'center'} mt={2}>
+          <Box textAlign={'center'} mt={4}>
             <NextLink href={'/works'}>
               <Button rightIcon={<ChevronRightIcon />} colorScheme={'teal'}>
                 Portfolio
@@ -105,12 +105,12 @@ const Home: NextPage = () => {
           <BioSection>
             <BioYear>08/2019 - 05/2022</BioYear>
             <Paragraph textAlign={'start'}>
-              Hoàn thành chương trình Thiết kế Website tại FPT Polytechnic
+              Hoàn thành chương trình Thiết kế Website tại FPT Polytechnic.
             </Paragraph>
           </BioSection>
           <BioSection>
             <BioYear>05/2021 - present</BioYear>
-            <Paragraph textAlign={'start'}>Làm việc tại Sphinx JSC</Paragraph>
+            <Paragraph textAlign={'start'}>Làm việc tại Sphinx JSC.</Paragraph>
           </BioSection>
           <BioSection>
             <BioYear>Hobbies</BioYear>
@@ -180,7 +180,7 @@ const Home: NextPage = () => {
       </Section>
 
       <Section delay={0.4}>
-        <Box mt={12}>
+        <Box mt={8}>
           <SimpleGrid columns={[1, 2, 2]} gap={6}>
             <SomeGridItem
               src={

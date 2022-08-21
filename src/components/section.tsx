@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { chakra, shouldForwardProp } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 
@@ -14,14 +14,17 @@ const StyleDiv = chakra(motion.div, {
 })
 
 const Section = ({ children, delay }: ISectionProps) => (
-  <StyleDiv
-    initial={{ y: 10, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    // @ts-ignore
-    transition={{ duration: 0.8, delay }}
-  >
-    {children}
-  </StyleDiv>
+  <AnimatePresence>
+    <StyleDiv
+      initial={{ y: 10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ opacity: 0 }}
+      // @ts-ignore
+      transition={{ duration: 0.8, delay, type: 'ease-in-out' }}
+    >
+      {children}
+    </StyleDiv>
+  </AnimatePresence>
 )
 Section.defaultProps = {
   delay: 0,
