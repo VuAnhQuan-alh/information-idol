@@ -41,7 +41,7 @@ export const GameGridItem = ({
   thumbnail,
 }: IWorkItemProps) => (
   <Box textAlign={'center'}>
-    <NextLink href={href}>
+    <NextLink href={href} passHref>
       <LinkBox cursor={'pointer'}>
         <Image
           src={thumbnail}
@@ -73,7 +73,7 @@ export const BoxGridItem = ({
   thumbnail,
 }: IWorkItemProps) => (
   <Box textAlign={'center'}>
-    <NextLink href={href}>
+    <NextLink href={href} passHref>
       <LinkBox cursor={'pointer'}>
         <Image
           src={thumbnail}
@@ -98,7 +98,7 @@ export const BoxGridItem = ({
   </Box>
 )
 
-export const GridItemStyle = () => (
+export const GlobalStyles = () => (
   <Global
     styles={`
       .grid-item-thumbnail {

@@ -13,6 +13,7 @@ import {
   Stack,
   useColorModeValue,
   IconButton,
+  useClipboard,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { ReactNode } from 'react'
@@ -49,6 +50,10 @@ const LinkItem = ({ href, path, children }: ILinkProps) => {
 
 const Navbar = (props: INavbarProps) => {
   const { path, boxProps } = props
+  const { onCopy } = useClipboard(
+    'https://github.com/VuAnhQuan-alh/information-idol'
+  )
+
   return (
     <Box
       position={'fixed'}
@@ -98,11 +103,7 @@ const Navbar = (props: INavbarProps) => {
         <Box flex={1} textAlign={'right'}>
           <IconButton
             as={Link}
-            onClick={() =>
-              navigator.clipboard.writeText(
-                'https://github.com/VuAnhQuan-alh/information-idol'
-              )
-            }
+            onClick={onCopy}
             icon={<GitHub size={14} />}
             aria-label={'btn-github'}
             mr={2}

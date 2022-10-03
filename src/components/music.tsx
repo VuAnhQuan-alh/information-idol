@@ -40,22 +40,6 @@ export const Meta = ({ children }: IMetaProps) => (
   </Badge>
 )
 
-export const TitleMusic = ({ children }: ITitleProps) => (
-  <Box>
-    <NextLink href={'/music'}>
-      <Link>Music</Link>
-    </NextLink>
-    <span>
-      &nbsp;
-      <ChevronRightIcon />
-      &nbsp;
-      <Heading display={'inline-block'} as={'h3'} fontSize={20}>
-        {children}
-      </Heading>
-    </span>
-  </Box>
-)
-
 export const MusicImage = ({ src, alt }: IImageProps) => (
   <NextImage
     src={src}

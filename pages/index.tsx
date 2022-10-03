@@ -137,7 +137,7 @@ const Home: NextPage = () => {
           </Heading>
           <List spacing={{ base: 1, md: 0 }}>
             <ListItem>
-              <Link href={'https://twitter.com/QunVAnh4'} target={'_blank'}>
+              <Link href={'https://twitter.com/'} target={'_blank'}>
                 <Button
                   variant={'ghost'}
                   colorScheme={'teal'}
@@ -149,7 +149,7 @@ const Home: NextPage = () => {
               </Link>
             </ListItem>
             <ListItem>
-              <Link href={'https://github.com/VuAnhQuan-alh'} target={'_blank'}>
+              <Link href={'https://instagram.com/'} target={'_blank'}>
                 <Button
                   variant={'ghost'}
                   colorScheme={'teal'}
@@ -161,10 +161,7 @@ const Home: NextPage = () => {
               </Link>
             </ListItem>
             <ListItem>
-              <Link
-                href={'https://facebook.com/anluuhung.todo.oc'}
-                target={'_blank'}
-              >
+              <Link href={'https://facebook.com/'} target={'_blank'}>
                 <Button
                   variant={'ghost'}
                   colorScheme={'teal'}

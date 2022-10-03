@@ -1,100 +1,85 @@
-import { BoxGame, GlobalBoxGameStyle } from '@/components/game'
 import { gameImgs } from '@/libs/games-fake'
-import Section from '@/components/section'
 import Article from '@/layouts/article'
-import {
-  Box,
-  Button,
-  Container,
-  Heading,
-  IconButton,
-  Progress,
-  SimpleGrid,
-  useBoolean,
-  useColorModeValue,
-} from '@chakra-ui/react'
-import { useMediaQuery } from '@chakra-ui/react'
-import { Pause, Play, RefreshCw } from 'react-feather'
-import { useEffect, useState } from 'react'
+import { Box, Container, useBreakpointValue } from '@chakra-ui/react'
+import { useCallback, useEffect, useState } from 'react'
+import { GridItemPokemon, TimePlayPokemon } from '@/components/games'
+import { TitleLayout } from '@/components/title-layout'
 
 const Pokemon = () => {
-  const [isPlay, setIsPlay] = useBoolean()
-  const [isPic, setIsPic] = useState<string[]>([])
-  const [isMobile] = useMediaQuery('(min-width: 48em)')
   const [arrImg, setArrImg] = useState<string[]>([])
+  const [point, setPoint] = useState<number>(0)
+  const [isPlay, setIsPlay] = useState<boolean>(false)
 
-  const onHandlePic = (url: string, idx: number) => {
-    const convert = `${url}_${idx}`
-    if (isPic.length === 0 || isPic.length === 2) {
-      setIsPic([convert])
-      return
+  const breakPoint = useBreakpointValue(
+    {
+      base: 12,
+      sm: 15,
+      md: 18,
+    },
+    { fallback: 'sm' }
+  )
+
+  const handlePlay = (mode: string) => {
+    if (mode === 'reset') {
+      handleViewPic()
+      setIsPlay(false)
+      setPoint(0)
     }
-    if (isPic[0].includes(url) && isPic[0] !== convert) {
-      setIsPic([url, ...isPic])
-    } else {
-      setIsPic([])
+    if (mode === 'new-game') {
+      handleViewPic()
+      setPoint(0)
+      setIsPlay(true)
     }
+    if (mode === 'play') setIsPlay(true)
+    if (mode === 'pause') setIsPlay(false)
   }
 
-  useEffect(() => {
-    const result = !isMobile ? gameImgs.slice(0, 10) : gameImgs
+  function handleViewPic() {
+    const newArr = [...gameImgs]
+    let result = []
+    if (breakPoint) {
+      while (result.length < breakPoint) {
+        let idx = Math.floor(Math.random() * breakPoint)
+        const img = newArr.splice(idx, 1)
+        result.push(...img)
+      }
+    }
     setArrImg([...result, ...result].sort(() => Math.random() - 0.5))
-  }, [isMobile])
+  }
+
+  const handleIncrement = useCallback(() => {
+    setPoint((poi) => poi + 5)
+  }, [])
+
+  // handle picture game
+  useEffect(() => {
+    handleViewPic()
+  }, [breakPoint])
 
   return (
     <Article title={'Game Pokemon'}>
       <Container>
-        <Heading variant={'page-title'} as={'h3'} fontSize={20} mb={4}>
-          Game Pokemon for You
-        </Heading>
+        <TitleLayout title={'Games'} href={'/games'}>
+          Pokemon for you
+        </TitleLayout>
 
-        <Section delay={0.1}>
-          <Box
-            p={4}
-            borderRadius={'lg'}
-            bg={useColorModeValue('gray.200', 'whiteAlpha.200')}
-          >
-            <Progress
-              height={'4px'}
-              value={75}
-              hasStripe
-              colorScheme={'facebook'}
-            />
-            <Box
-              mt={4}
-              display={'flex'}
-              justifyContent={'space-between'}
-              alignItems={'center'}
-            >
-              <Button>100</Button>
-              <IconButton
-                aria-label={'btn-play'}
-                onClick={setIsPlay.toggle}
-                icon={isPlay ? <Pause size={16} /> : <Play size={16} />}
-              />
-              <IconButton
-                aria-label={'btn-reset'}
-                icon={<RefreshCw size={16} />}
-              />
-            </Box>
-          </Box>
-        </Section>
-
+        {/* timing for game */}
         <Box mt={4}>
-          <SimpleGrid columns={[4, 6, 6]} gap={2}>
-            <GlobalBoxGameStyle />
-            {gameImgs &&
-              arrImg.map((game, idx) => (
-                <Section delay={(idx + 0.5) / 10} key={idx}>
-                  <BoxGame
-                    onClick={() => onHandlePic(game, idx)}
-                    src={game}
-                    alt={'game-alt'}
-                    isCheck={isPic.length === 2 ? isPic[0] : ''}
-                  />
-                </Section>
-              ))}
-          </SimpleGrid>
+          <TimePlayPokemon onPlay={handlePlay} point={point} />
+        </Box>
+
+        {/* Box pokemon */}
+        <Box mt={4} position={'relative'}>
+          <GridItemPokemon onIncrement={handleIncrement} thumbnails={arrImg} />
+          <Box
+            position={'absolute'}
+            top={0}
+            left={0}
+            w={'full'}
+            height={'full'}
+            display={isPlay ? 'none' : 'block'}
+            bg={'whiteAlpha.400'}
+          />
         </Box>
       </Container>
     </Article>

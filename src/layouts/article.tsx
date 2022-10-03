@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import Head from 'next/head'
-import { GridItemStyle } from '@/components/grid-item'
+import { GlobalStyles } from '@/components/grid-item'
 import { ReactNode } from 'react'
 import { Container } from '@chakra-ui/react'
 
@@ -29,7 +29,7 @@ const Article = ({ children, title }: IArticleProps) => {
         <Head>
           <title>{title} - ALH</title>
         </Head>
-        <GridItemStyle />
+        <GlobalStyles />
         <Container maxW={'container.md'}>{children}</Container>
       </>
     </motion.article>

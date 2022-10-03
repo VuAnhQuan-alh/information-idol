@@ -1,5 +1,5 @@
 import { isEmpty } from 'lodash'
-import { Meta, TitleMusic } from '@/components/music'
+import { Meta } from '@/components/music'
 import Section from '@/components/section'
 import Article from '@/layouts/article'
 import PlaySong from '@/components/song'
@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 import { audios } from '@/libs/audios-fake'
+import { TitleLayout } from '@/components/title-layout'
 
 type ISong = {
   url: string
@@ -41,13 +42,13 @@ const Song = () => {
   }
 
   useEffect(() => {
-    if (isEmpty(musicId)) return
+    if (isEmpty(musicId)) return undefined
 
     // @ts-ignore
     const song = handleUrl(musicId)
     if (isEmpty(song)) {
       routePush('/404')
-      return
+      return undefined
     }
 
     const result = song ?? defaultSong
@@ -57,7 +58,9 @@ const Song = () => {
   return (
     <Article title={'Songs'}>
       <Container>
-        <TitleMusic>Your Song</TitleMusic>
+        <TitleLayout title={'Music'} href={'/music'}>
+          Your Song
+        </TitleLayout>
         <Box mt={3}>
           <Section delay={0.1}>
             <Box>

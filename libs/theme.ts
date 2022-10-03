@@ -29,6 +29,11 @@ const components = {
       textUnderlineOffset: 3,
     }),
   },
+  AlertDialog: {
+    baseStyle: {
+      mt: 4,
+    },
+  },
 }
 
 const fonts = {
